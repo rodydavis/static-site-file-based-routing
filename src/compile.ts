@@ -188,13 +188,17 @@ export async function compileTarget(input: string, output: string) {
         } else {
             // Check if content is the same
             const current = fs.readFileSync(input);
-            const previous = fs.readFileSync(output);
-            if (Buffer.compare(current, previous) !== 0) {
-                const parentDir = path.dirname(output);
-                if (!fs.existsSync(parentDir)) {
-                    fs.mkdirSync(parentDir, { recursive: true });
+            const parentDir = path.dirname(output);
+            if (!fs.existsSync(parentDir)) {
+                fs.mkdirSync(parentDir, { recursive: true });
+            }
+            if (fs.existsSync(output)) {
+                const previous = fs.readFileSync(output);
+                if (Buffer.compare(current, previous) !== 0) {
+                    fs.writeFileSync(output, current);
                 }
-                fs.writeFileSync(output, current);
+            } else {
+                fs.copyFileSync(input, output);
             }
         }
     }
