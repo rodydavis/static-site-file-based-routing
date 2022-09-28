@@ -186,18 +186,19 @@ export async function compileTarget(input: string, output: string) {
         if (['.html', '.md', '.markdown'].includes(ext)) {
             await compileFile(input, output);
         } else {
-            // Check if content is the same
             const current = fs.readFileSync(input);
             const parentDir = path.dirname(output);
             if (!fs.existsSync(parentDir)) {
                 fs.mkdirSync(parentDir, { recursive: true });
             }
             if (fs.existsSync(output)) {
+                // Check if content is the same
                 const previous = fs.readFileSync(output);
                 if (Buffer.compare(current, previous) !== 0) {
                     fs.writeFileSync(output, current);
                 }
             } else {
+                // Copy the file
                 fs.copyFileSync(input, output);
             }
         }
