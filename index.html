@@ -33,6 +33,11 @@
             text-decoration: underline;
         }
 
+        nav a[data-selected] {
+            text-decoration: underline;
+            color: rgb(227, 82, 82);
+        }
+
         main {
             margin: 0 auto;
             max-width: 800px;
@@ -62,7 +67,17 @@
 
     </main>
 
+    <script>
+        const links = document.querySelectorAll('nav a');
+        const baseHref = document.querySelector('base').getAttribute('href');
+        const pathname = window.location.pathname.split('/').join('');
+        const currentPath = baseHref.split('/').join('') === pathname ? baseHref : baseHref + pathname;
 
-
+        for (const link of links) {
+            if (link.pathname === currentPath) {
+                link.setAttribute('data-selected', '');
+            }
+        }
+    </script>
   </body>
 </html>
