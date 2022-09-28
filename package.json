@@ -6,8 +6,8 @@
   "scripts": {
     "start": "npx live-server build --proxy=/html-fbr:http://127.0.0.1:8080",
     "postinstall": "npm run tsc",
-    "example:build": "node dist/main.js --inputDir ./example --outputDir ./build",
-    "example:dev": "node dist/main.js --inputDir ./example --outputDir ./build -w",
+    "build": "node dist/main.js --inputDir ./example --outputDir ./build",
+    "dev": "node dist/main.js --inputDir ./example --outputDir ./build -w",
     "tsc": "tsc",
     "tsc:watch": "tsc -w"
   },

@@ -15,3 +15,31 @@ This is a simple example of how to render a MPA with file based routing and incl
 - File based routing
 - Syntax highlighting
 - Github Actions
+
+## Getting Started
+
+Build TS files:
+
+```bash
+npm i
+```
+
+Start the watch mode on the html files:
+
+```bash
+npm run dev
+```
+
+or one time build:
+
+```bash
+npm run build
+```
+
+Start the http server:
+
+```bash
+npm run start
+```
+
+Open the browser to http://127.0.0.1:8080/html-fbr/

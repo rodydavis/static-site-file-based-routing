@@ -25,7 +25,7 @@ jobs:
 
       - name: Build
         run: |
-          npm run example:build
+          npm run build
       - name: Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
