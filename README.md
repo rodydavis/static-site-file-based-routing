@@ -84,6 +84,20 @@ Create a new layout in the target folder that is named `layout` and is a html fi
 
 If a `<slot>` is added it will replace the content with the child pages in the directory, otherwise it will append to the end of the body.
 
+### Nested Layouts
+
+The layout chain will be the following for the given route `/about/`:
+
+1. `example/about/index.html`
+2. `example/about/layout.html`
+3. `example/layout.html`
+
 ## CSS and JS
 
 Any css or js files in the target folder will be copied to the build folder.
+
+## Assets
+
+Any assets in the `public` folder will be copied to the build folder.
+
+There is an option to pass multiple directories to the `public` option.

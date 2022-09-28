@@ -103,7 +103,7 @@ export async function compileFile(file: string, target: string) {
 
     // Replace extension
     const ext = path.extname(file);
-    const newFile = target.replace(ext, ".html");
+    const newFile = target.replace(ext, '.html');
 
     // Check if parent directory exists
     const parentDir = path.dirname(newFile);
