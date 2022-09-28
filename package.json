@@ -4,7 +4,7 @@
   "description": "File based routing for HTML MPA",
   "type": "module",
   "scripts": {
-    "start": "npx live-server build",
+    "start": "npx live-server build --proxy=/html-fbr:http://127.0.0.1:8080",
     "postinstall": "npm run tsc",
     "example:build": "node dist/main.js --inputDir ./example --outputDir ./build",
     "example:dev": "node dist/main.js --inputDir ./example --outputDir ./build -w",
