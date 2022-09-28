@@ -170,19 +170,27 @@ export async function compileDir(inputDir: string, outputDir: string) {
         const inputFile = `${inputDir}/${file}`;
         const outputFile = `${outputDir}/${file}`;
 
-        const stat = fs.statSync(inputFile);
-        if (stat.isDirectory()) {
-            if (!fs.existsSync(outputFile)) {
-                fs.mkdirSync(outputFile, { recursive: true });
-            }
+        await compileTarget(inputFile, outputFile);
+    }
+}
 
-            await compileDir(inputFile, outputFile);
-        } else if (stat.isFile()) {
-            const ext = path.extname(file);
-            if (['.html', '.md', '.markdown'].includes(ext)) {
-                await compileFile(inputFile, outputFile);
-            } else {
-                fs.copyFileSync(inputFile, outputFile);
+export async function compileTarget(input: string, output: string) {
+    const stat = fs.statSync(input);
+    if (stat.isDirectory()) {
+        if (!fs.existsSync(output)) {
+            fs.mkdirSync(output, { recursive: true });
+        }
+        await compileDir(input, output);
+    } else if (stat.isFile()) {
+        const ext = path.extname(input);
+        if (['.html', '.md', '.markdown'].includes(ext)) {
+            await compileFile(input, output);
+        } else {
+            // Check if content is the same
+            const current = fs.readFileSync(input, 'utf-8');
+            const previous = fs.readFileSync(output, 'utf-8');
+            if (current !== previous) {
+                fs.writeFileSync(output, current);
             }
         }
     }

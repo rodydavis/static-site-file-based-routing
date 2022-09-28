@@ -1,5 +1,5 @@
 import * as fs from "fs";
-import { compileDir, compileFile } from "./compile.js";
+import { compileDir, compileTarget } from "./compile.js";
 import * as path from "path";
 import chokidar from "chokidar";
 import { publicDirectory } from "./static.js";
@@ -53,12 +53,7 @@ export default async function build(options: Options) {
                         const outDir = `${outputDir}/${inDir}`;
                         await compileDir(dir, outDir);
                     } else {
-                        const ext = path.extname(inputFile);
-                        if (['.html', '.md', '.markdown'].includes(ext)) {
-                            await compileFile(inputFile, outputFile);
-                        } else {
-                            fs.copyFileSync(inputFile, outputFile);
-                        }
+                        await compileTarget(inputFile, outputFile);
                     }
                 }
             }
