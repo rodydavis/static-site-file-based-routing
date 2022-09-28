@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { parseArgs } from "node:util";
+// @ts-ignore
+import { parseArgs } from "@pkgjs/parseargs";
 import build from "./build.js";
 
 export async function main() {

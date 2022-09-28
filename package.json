@@ -12,6 +12,7 @@
     "tsc:watch": "tsc -w"
   },
   "devDependencies": {
+    "@pkgjs/parseargs": "^0.10.0",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^18.7.23",
     "chokidar": "^3.5.3",

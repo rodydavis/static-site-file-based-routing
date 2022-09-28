@@ -53,7 +53,12 @@ export default async function build(options: Options) {
                         const outDir = `${outputDir}/${inDir}`;
                         await compileDir(dir, outDir);
                     } else {
-                        await compileFile(inputFile, outputFile);
+                        const ext = path.extname(inputFile);
+                        if (['.html', '.md', '.markdown'].includes(ext)) {
+                            await compileFile(inputFile, outputFile);
+                        } else {
+                            fs.copyFileSync(inputFile, outputFile);
+                        }
                     }
                 }
             }

@@ -7,10 +7,8 @@ import type { Document } from "parse5/dist/tree-adapters/default.js";
 import format from 'html-format';
 
 function compile(file: string) {
-    const raw = fs.readFileSync(file, "utf8");
+    const raw = fs.readFileSync(file, "utf-8");
     const ext = path.extname(file);
-
-    let content = raw;
 
     switch (ext) {
         case ".md":
@@ -35,14 +33,14 @@ function compile(file: string) {
                     return "";
                 },
             });
-            content = md.render(raw);
-            break;
+            return parse5.parse(md.render(raw));
         case ".html":
+            return parse5.parse(raw);
         default:
             break;
     }
 
-    return parse5.parse(content);
+    return raw;
 }
 
 const HTML = (options?: { head?: string; body?: string }) => `
@@ -97,8 +95,10 @@ export async function compileFile(file: string, target: string) {
 
     for (const item of files) {
         const doc = compile(item);
-        const content = parse5.serialize(doc);
-        output = mergeDocuments(output, content);
+        if (typeof doc !== 'string') {
+            const content = parse5.serialize(doc);
+            output = mergeDocuments(output, content);
+        }
     }
 
     // Replace extension
@@ -178,7 +178,12 @@ export async function compileDir(inputDir: string, outputDir: string) {
 
             await compileDir(inputFile, outputFile);
         } else if (stat.isFile()) {
-            await compileFile(inputFile, outputFile);
+            const ext = path.extname(file);
+            if (['.html', '.md', '.markdown'].includes(ext)) {
+                await compileFile(inputFile, outputFile);
+            } else {
+                fs.copyFileSync(inputFile, outputFile);
+            }
         }
     }
 }

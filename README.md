@@ -43,3 +43,47 @@ npm run start
 ```
 
 Open the browser to http://127.0.0.1:8080/html-fbr/
+
+## Creating a new page
+
+Create a new page in the target folder that is named `index` and is a markdown or html file:
+
+`example/about/index.md`
+
+```markdown
+# About Page
+
+This is the about page.
+```
+
+`example/index.html`
+
+```html
+<h1>Home Page</h1>
+```
+
+## Creating a new layout
+
+Create a new layout in the target folder that is named `layout` and is a html file:
+
+`example/about/layout.html`
+
+```html
+<html>
+  <head>
+    <title>About Page</title>
+  </head>
+  <body>
+    <h1>About Page</h1>
+    <div class="content">
+      <slot></slot>
+    </div>
+  </body>
+</html>
+```
+
+If a `<slot>` is added it will replace the content with the child pages in the directory, otherwise it will append to the end of the body.
+
+## CSS and JS
+
+Any css or js files in the target folder will be copied to the build folder.
