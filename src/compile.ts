@@ -43,7 +43,8 @@ function compile(file: string) {
     return raw;
 }
 
-const HTML = (options?: { head?: string; body?: string }) => `
+function createHtml(options?: { head?: string; body?: string; }) {
+    return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +55,7 @@ ${options?.body ?? "<slot></slot>"}
 </body>
 </html>
 `;
+}
 
 export async function compileFile(file: string, target: string) {
     // Use regex to check if ends with index.*
@@ -91,7 +93,7 @@ export async function compileFile(file: string, target: string) {
         }
     }
 
-    let output = HTML();
+    let output = createHtml();
 
     for (const item of files) {
         const doc = compile(item);

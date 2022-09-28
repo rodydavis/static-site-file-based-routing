@@ -1,10 +1,10 @@
 {
-  "name": "html-fbr",
+  "name": "static-site-file-based-routing",
   "version": "1.0.0",
   "description": "File based routing for HTML MPA",
   "type": "module",
   "scripts": {
-    "start": "npx live-server build --proxy=/html-fbr:http://127.0.0.1:8080",
+    "start": "npx live-server build --proxy=/static-site-file-based-routing:http://127.0.0.1:8080",
     "postinstall": "npm run tsc",
     "build": "node dist/main.js --inputDir ./example --outputDir ./build",
     "dev": "node dist/main.js --inputDir ./example --outputDir ./build -w",
