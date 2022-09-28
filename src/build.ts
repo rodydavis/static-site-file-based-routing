@@ -57,7 +57,21 @@ export default async function build(options: Options) {
                 }
             }
         });
+    } else {
+        await compileDir(inputDir, outputDir);
+    }
 
+    if (publicDir.split(',').length > 1) {
+        for (const dir of publicDir.split(',')) {
+            publicDirectory(dir, outputDir, watch);
+        }
+    } else {
+        publicDirectory(publicDir, outputDir, watch);
+    }
+}
+
+function publicDirectory(publicDir: string, outputDir: string, watch: boolean) {
+    if (watch) {
         if (fs.existsSync(publicDir)) {
             chokidar.watch(publicDir).on("all", (event, inputFile) => {
                 console.log(event, inputFile);
@@ -75,8 +89,6 @@ export default async function build(options: Options) {
             });
         }
     } else {
-        await compileDir(inputDir, outputDir);
-
         // Copy static files
         if (fs.existsSync(publicDir)) {
             copyStaticFiles(publicDir, outputDir);
