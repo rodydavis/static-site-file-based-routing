@@ -1,3 +1,3 @@
 Home Page :)
 
-![html logo](/html-logo.png)
+![html logo](html-logo.png)
