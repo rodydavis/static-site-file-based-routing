@@ -190,6 +190,10 @@ export async function compileTarget(input: string, output: string) {
             const current = fs.readFileSync(input, 'utf-8');
             const previous = fs.readFileSync(output, 'utf-8');
             if (current !== previous) {
+                const parentDir = path.dirname(output);
+                if (!fs.existsSync(parentDir)) {
+                    fs.mkdirSync(parentDir, { recursive: true });
+                }
                 fs.writeFileSync(output, current);
             }
         }
