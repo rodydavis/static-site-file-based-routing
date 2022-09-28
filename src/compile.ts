@@ -187,9 +187,9 @@ export async function compileTarget(input: string, output: string) {
             await compileFile(input, output);
         } else {
             // Check if content is the same
-            const current = fs.readFileSync(input, 'utf-8');
-            const previous = fs.readFileSync(output, 'utf-8');
-            if (current !== previous) {
+            const current = fs.readFileSync(input);
+            const previous = fs.readFileSync(output);
+            if (Buffer.compare(current, previous) !== 0) {
                 const parentDir = path.dirname(output);
                 if (!fs.existsSync(parentDir)) {
                     fs.mkdirSync(parentDir, { recursive: true });
