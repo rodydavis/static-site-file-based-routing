@@ -67,9 +67,9 @@
     <header>
       <nav>
         <a href="">Home</a>
-        <a href="dashboard">Dashboard</a>
-        <a href="demo">Demo</a>
-        <a href="faq">FAQ</a>
+        <a href="dashboard/">Dashboard</a>
+        <a href="demo/">Demo</a>
+        <a href="faq/">FAQ</a>
       </nav>
     </header>
 
@@ -108,10 +108,11 @@
     </main>
 
     <script>
+        // Update the selected nav link
         const links = document.querySelectorAll('nav a');
         const baseHref = document.querySelector('base').getAttribute('href').split('/').join('');
-        const pathname = window.location.pathname.split('/').join('');
-        const currentPath = baseHref === pathname ? `/${baseHref}/` : `/${baseHref}/` + pathname;
+        const pathname = window.location.pathname.split('/').join('').replace(baseHref, '');
+        const currentPath = !pathname ? `/${baseHref}/` : `/${baseHref}/${pathname}/`;
 
         for (const link of links) {
             if (link.pathname === currentPath) {
