@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/default.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav {
+            display: flex;
+            gap: 1rem;
+            background-color: black;
+            color: white;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    </style>
+    
+    <style>
+        main {
+            max-width: unset;
+        }
+
+        canvas {
+            flex: 1;
+            width: 100%;
+        }
+    </style>
+  <title>Example</title></head>
+  <body>
+
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/demo">Demo</a>
+        <a href="/faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <canvas></canvas>
+
+      <script src="https://unpkg.com/three@0.77.0/three.min.js"></script>
+      <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.querySelector('canvas'),
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.BoxGeometry(1, 1, 1);
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+        camera.position.z = 5;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+
+            renderer.render(scene, camera);
+        };
+
+        animate();
+    </script>
+    </main>
+
+
+
+  </body>
+</html>

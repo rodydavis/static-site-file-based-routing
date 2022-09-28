@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+      href="//unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/default.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav {
+            display: flex;
+            gap: 1rem;
+            background-color: black;
+            color: white;
+            padding: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            margin: 0 auto;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        img {
+            max-width: 100%;
+        }
+    </style>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+    <title>Example</title></head>
+  <body>
+
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/demo">Demo</a>
+        <a href="/faq">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+
+      <h1>FAQ</h1>
+      <p>This is a simple FAQ written in markdown!</p>
+      <ul>
+        <li>Point 1</li>
+        <li>Point 2</li>
+      </ul>
+      <h2>Syntax Highlighting</h2>
+      <pre class="hljs"><code><span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">"Hello World!"</span>);
+
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Foo</span> {
+  <span class="hljs-title function_">constructor</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">bar</span> = <span class="hljs-string">"baz"</span>;
+  }
+
+  <span class="hljs-title function_">print</span>(<span class="hljs-params"></span>) {
+    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">bar</span>;
+  }
+}
+</code></pre>
+      <h2>Tables</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Header 1</th>
+            <th>Header 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cell 1.1</td>
+            <td>Cell 2.1</td>
+          </tr>
+          <tr>
+            <td>Cell 1.2</td>
+            <td>Cell 2.2</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>Links</h2>
+      <p><a href="https://www.google.com">Google</a></p>
+
+
+
+
+    </main>
+
+
+
+  </body>
+</html>
