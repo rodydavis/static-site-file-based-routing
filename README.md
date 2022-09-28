@@ -15,6 +15,7 @@ This is a simple example of how to render a MPA with file based routing and incl
 - File based routing
 - Syntax highlighting
 - Github Actions
+- [Web Dev Server](https://modern-web.dev/docs/dev-server)
 
 ## Getting Started
 

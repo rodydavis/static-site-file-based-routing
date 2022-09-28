@@ -4,7 +4,7 @@
   "description": "File based routing for HTML MPA",
   "type": "module",
   "scripts": {
-    "start": "npx live-server build --proxy=/static-site-file-based-routing:http://127.0.0.1:8080",
+    "start": "wds --node-resolve --root-dir build --base-path /static-site-file-based-routing --open --watch",
     "postinstall": "npm run tsc",
     "build": "node dist/main.js --inputDir ./example --outputDir ./build",
     "dev": "node dist/main.js --inputDir ./example --outputDir ./build -w",
@@ -15,10 +15,10 @@
     "@pkgjs/parseargs": "^0.10.0",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^18.7.23",
+    "@web/dev-server": "^0.1.34",
     "chokidar": "^3.5.3",
     "highlight.js": "^11.6.0",
     "html-format": "^1.0.2",
-    "live-server": "^1.2.2",
     "markdown-it": "^13.0.1",
     "parse5": "^7.1.1",
     "typescript": "^4.8.4"
