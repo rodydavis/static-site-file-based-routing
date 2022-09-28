@@ -22,7 +22,7 @@ export async function main() {
         short: "w",
       },
     },
-    allowPositionals: true,
+    allowPositional: true,
   });
 
   if (inputDir === undefined || outputDir === undefined) {
